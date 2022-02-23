@@ -1,0 +1,24 @@
+{
+  "name": "facerecognitionbrain-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebaubau/facerecognitionbrain-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thebaubau/facerecognitionbrain-api/issues"
+  },
+  "homepage": "https://github.com/thebaubau/facerecognitionbrain-api#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  }
+}
