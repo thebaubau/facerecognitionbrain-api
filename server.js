@@ -1,4 +1,5 @@
 const express = require('express');
+const req = require('express/lib/request');
 
 const app = express();
 app.use(express.json());
@@ -50,16 +51,36 @@ app.post('/register', (req, res) => {
   res.json(database.users[database.users.length - 1]);
 })
 
-app.get('profile/:id', (req, res) => {
+app.get('/profile/:id', (req, res) => {
   const {id} = req.params;
+  let found = false;
+
   database.users.forEach(user => {
     if (user.id === id) {
-      res.json(user);
-    } else {
-      res.status(404).json('No such user');
+      found = true;
+      return res.json(user);
     } 
   })
-}) 
+  if (!found) {
+    res.status(400).json('No such user');
+  }
+})
+
+app.post('/image', (req, res) => {
+  const {id} = req.body;
+  let found = false;
+
+  database.users.forEach(user => {
+    if (user.id === id) {
+      found = true;
+      user.entries++
+      return res.json(user.entries);
+    } 
+  })
+  if (!found) {
+    res.status(400).json('No such user');
+  }
+})
 
 app.listen(3000, () => {
   console.log('App is running on port 3000');
